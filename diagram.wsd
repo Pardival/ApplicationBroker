@@ -3,6 +3,11 @@
     Utilisateur -- Compte
     BrokerBean -- Titre
     BrokerBean -- Utilisateur
+    BrokerBean -- Compte
+    TitreService -- BrokerBean
+    TitreRessource -- TitreService
+    UtilisateurService -- BrokerBean
+    UtilisateurRessource -- UtilisateurService
 
 
     class Titre {
@@ -34,17 +39,52 @@
         List<Utilisateur> utilisateurs
         List<Titre> titres
         
-        Utilisateur ajouterUtilisateur(Utilisateur aAjouter)
-        Utilisateur supprimerUtilisateur(Utilisateur aSupprimer)
-        
-        Titre ajouterTitre(Titre aAjouter, Utilisateur utilisateur)
-        Titre supprimerTitre(Titre aSupprimer, Utilisateur utilisateur)
+        + Utilisateur ajouterUtilisateur(Utilisateur aAjouter)
+        + Utilisateur supprimerUtilisateur(Utilisateur aSupprimer)
+        + Utilisateur debiter(Integer aDebiter, Utilisateur aCrediter)
+        + Utilisateur crediter(Integer aCrediter, Utilisateur aDebiter)
+        + Utilisateur ajouterCompte(Utilisateur aModifier)
+        + Utilisateur supprimerSupprimer(Utilisateur aModifier)
+        + Titre ajouterTitre(Titre aAjouter, Utilisateur aModifier)
+        + Titre supprimerTitre(Titre aSupprimer, Utilisateur aModifier)
 
-        Utilisateur debiter(Integer aDebiter)
-        Utilisateur crediter(Integer aCrediter)
-
-        Utilisateur acheterTitre(Titre aAcheter, Utilisateur acheteur)
-        Utilisateur vendreTitre( Titre aVendre, Utilisateur vendeur)
+        + mAJListTitre(List<Titre> listAjour)
+        + consulterTitre(String mnemonique)
+        + rechercheMnemonique(String mnemonique)
     }
-    
+
+    Class TitreService {
+        + ListTitre consulterTitre(String mnemonique)
+        + List<Titre> rechercheMnemonique(String mnemonique)
+
+        - JMS mAJListTitre()
+    }
+
+    class TitreRessource {
+        GET consulterTitre()
+        GET rechercheMnemonique()
+
+    }
+    note left: Endpoint REST
+
+    Class UtilisateurService {
+        + Utilisateur ajouterUtilisateur(data)
+        + Utilisateur supprimerUtilisateur(data)
+        + Titre acheterAction(data)
+        + mettreVenteAction(data)
+
+        - JMS transfererArgent(Double aTransferer)
+        - JMS transfererTitre(Double aTransferer)
+        - JMS recpetionnerTitre(Double aTransferer)
+        - JMS receptionnerArgent(Double aTransferer)
+    }
+
+    class UtilisateurRessource {
+        POST ajouterUtilisateur()
+        DELETE supprimerUtilisateur()
+        POST acheterAction()
+        POST mettreVenteAction()
+    }
+    note right: Endpoint REST 
+
 @enduml
