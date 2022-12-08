@@ -1,12 +1,12 @@
 @startuml classdiagram
     Titre -- Compte
     Utilisateur -- Compte
-    BrokerBean -- Titre
-    BrokerBean -- Utilisateur
-    BrokerBean -- Compte
-    TitreService -- BrokerBean
+    TitreBean -- Titre
+    UtilisateurBean -- Utilisateur
+
+    TitreService -- TitreBean
     TitreRessource -- TitreService
-    UtilisateurService -- BrokerBean
+    UtilisateurService -- UtilisateurBean
     UtilisateurRessource -- UtilisateurService
 
 
@@ -16,41 +16,35 @@
         Double cours 
         Integer variation
         Date dateCours
-        void methods()
     }
 
     class Compte {
         Long id
-        Long idUser
         Double solde
         List<Titre> titres
-        void methods()
     }
 
     class Utilisateur {
         Long id
         String nom
-        List<Compte> compte
-        Compte compteActif
-        void methods()
+        Compte compte
     }
 
-    class BrokerBean {
-        List<Utilisateur> utilisateurs
+    class TitreBean {
         List<Titre> titres
-        
-        + Utilisateur ajouterUtilisateur(Utilisateur aAjouter)
-        + Utilisateur supprimerUtilisateur(Utilisateur aSupprimer)
-        + Utilisateur debiter(Integer aDebiter, Utilisateur aCrediter)
-        + Utilisateur crediter(Integer aCrediter, Utilisateur aDebiter)
-        + Utilisateur ajouterCompte(Utilisateur aModifier)
-        + Utilisateur supprimerSupprimer(Utilisateur aModifier)
-        + Titre ajouterTitre(Titre aAjouter, Utilisateur aModifier)
-        + Titre supprimerTitre(Titre aSupprimer, Utilisateur aModifier)
 
-        + mAJListTitre(List<Titre> listAjour)
-        + consulterTitre(String mnemonique)
-        + rechercheMnemonique(String mnemonique)
+        + modifier(List<Titre> listAjour)
+        + Titre trouverParMnemonique(String mnemonique)
+        + List<Titre> rechercheMnemonique(String mnemonique)
+    }
+
+    class UtilisateurBean {
+        List<Utilisateur> utilisateurs
+
+        + Utilisateur ajouter(Utilisateur aAjouter)
+        + Utilisateur supprimer(Utilisateur aSupprimer)
+        + Utilisateur modifier(Utilisateur aModifier)
+        + Utilisateur trouverParId(String idUtilisateur)
     }
 
     Class TitreService {
@@ -71,8 +65,14 @@
         + Utilisateur ajouterUtilisateur(data)
         + Utilisateur supprimerUtilisateur(data)
         + Titre acheterAction(data)
-        + mettreVenteAction(data)
 
+        + Utilisateur debiter(Integer aDebiter, Utilisateur aCrediter)
+        + Utilisateur crediter(Integer aCrediter, Utilisateur aDebiter)
+        + Utilisateur consulterPositions(Long idUtilisateur)
+        + Utilisateur ajouterTitre(Titre aAjouter, Utilisateur aModifier)
+        + Utilisateur supprimerTitre(Titre aSupprimer, Utilisateur aModifier)
+
+        - JMS mettreVenteAction(data)
         - JMS transfererArgent(Double aTransferer)
         - JMS transfererTitre(Double aTransferer)
         - JMS recpetionnerTitre(Double aTransferer)
@@ -84,6 +84,7 @@
         DELETE supprimerUtilisateur()
         POST acheterAction()
         POST mettreVenteAction()
+        GET consulterPosition()
     }
     note right: Endpoint REST 
 
