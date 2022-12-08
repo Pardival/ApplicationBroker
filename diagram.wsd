@@ -1,0 +1,50 @@
+@startuml classdiagram
+    Titre -- Compte
+    Utilisateur -- Compte
+    BrokerBean -- Titre
+    BrokerBean -- Utilisateur
+
+
+    class Titre {
+        String nomEntreprise
+        String mnemonique
+        Double cours 
+        Integer variation
+        Date dateCours
+        void methods()
+    }
+
+    class Compte {
+        Long id
+        Long idUser
+        Double solde
+        List<Titre> titres
+        void methods()
+    }
+
+    class Utilisateur {
+        Long id
+        String nom
+        List<Compte> compte
+        Compte compteActif
+        void methods()
+    }
+
+    class BrokerBean {
+        List<Utilisateur> utilisateurs
+        List<Titre> titres
+        
+        Utilisateur ajouterUtilisateur(Utilisateur aAjouter)
+        Utilisateur supprimerUtilisateur(Utilisateur aSupprimer)
+        
+        Titre ajouterTitre(Titre aAjouter, Utilisateur utilisateur)
+        Titre supprimerTitre(Titre aSupprimer, Utilisateur utilisateur)
+
+        Utilisateur debiter(Integer aDebiter)
+        Utilisateur crediter(Integer aCrediter)
+
+        Utilisateur acheterTitre(Titre aAcheter, Utilisateur acheteur)
+        Utilisateur vendreTitre( Titre aVendre, Utilisateur vendeur)
+    }
+    
+@enduml
