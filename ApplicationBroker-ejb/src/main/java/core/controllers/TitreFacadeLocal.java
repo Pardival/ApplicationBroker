@@ -31,7 +31,11 @@ public interface TitreFacadeLocal {
     
     ////////////////////////////////////////
     
-    List<Titre> modifier(List<Titre> listAjout);
+    List<Titre> ajouter(Titre aAjouter);
+        
+    List<Titre> supprimer(Titre aSupprimer);
+    
+    List<Titre> modifier(Titre aModifier);
     
     Titre trouverParMnemonique(String mnemonique);
     

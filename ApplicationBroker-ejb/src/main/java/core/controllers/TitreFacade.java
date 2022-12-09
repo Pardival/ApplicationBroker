@@ -32,7 +32,7 @@ public class TitreFacade extends AbstractFacade<Titre> implements TitreFacadeLoc
         super(Titre.class);
     }
 
-    /////////////////////////////////////////
+    ///////////////////Semble inutile //////////////////////
     
     public List<Titre> getTitres() {
         return titres;
@@ -40,16 +40,28 @@ public class TitreFacade extends AbstractFacade<Titre> implements TitreFacadeLoc
 
     public void setTitres(List<Titre> titres) {
         this.titres = titres;
-    }    
+    }   
+    
+    /////////////////////////////////////////
     
     @Override
-    public List<Titre> modifier(List<Titre> listAjout) {
+    public List<Titre> ajouter(Titre aAjouter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Titre> supprimer(Titre aSupprimer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public List<Titre> modifier(Titre aModifier) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Titre trouverParMnemonique(String mnemonique) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
