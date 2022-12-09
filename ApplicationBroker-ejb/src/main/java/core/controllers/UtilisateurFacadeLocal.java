@@ -30,7 +30,14 @@ public interface UtilisateurFacadeLocal {
 
     int count();
     
-    /**************************/
+    /////////////////////////////////////////
+    Utilisateur ajouter(Utilisateur aAjouter);
+    
+    Utilisateur supprimer(Utilisateur aSupprimer);
+    
+    Utilisateur modifier(Utilisateur aModifier);
+    
+    Utilisateur aTrouverParId(String idUtilisateur);
     
     
 }
