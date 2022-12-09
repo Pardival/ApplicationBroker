@@ -28,5 +28,20 @@ public class CompteFacade extends AbstractFacade<Compte> implements CompteFacade
     public CompteFacade() {
         super(Compte.class);
     }
+
+    @Override
+    public Compte ajouter(Compte compte) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Compte supprimer(Compte compte) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Compte modifier(Compte compte) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

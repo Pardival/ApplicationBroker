@@ -30,4 +30,12 @@ public interface CompteFacadeLocal {
 
     int count();
     
+    ////////////////////////////////////////
+    
+    Compte ajouter(Compte compte);
+    
+    Compte supprimer(Compte compte);
+    
+    Compte modifier(Compte compte);
+    
 }

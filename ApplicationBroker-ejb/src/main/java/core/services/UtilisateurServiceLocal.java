@@ -7,6 +7,7 @@ package core.services;
 
 import core.entities.Titre;
 import core.entities.Utilisateur;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -20,4 +21,6 @@ public interface UtilisateurServiceLocal {
     Utilisateur supprimerUtilisateur(Utilisateur aSupprimer);
     
     Titre acheterAction(Titre idTitre, Double prixAchat, Double prixVente, Long idUtilisateur);
+    
+    List<Titre> consulterPosition(Long idUtilisateur);
 }
