@@ -15,9 +15,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface TitreServiceLocal {
-    Titre consulterTitre(String mnemonique);
+    String consulterTitre();
     
-    List<Titre> rechercheMnemonique(String mnemonique);
+    String rechercheMnemonique(String mnemonique);
     
     void mAjListTitre();
 }

@@ -1,4 +1,15 @@
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\TitreFacadeLocal.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\services\TitreService.java
 C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\entities\Utilisateur.java
-C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\entities\Compte.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\AbstractFacade.java
 C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\fr\miage\toulouse\m2\project\NewSessionBean.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\UtilisateurFacade.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\TitreFacade.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\UtilisateurFacadeLocal.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\entities\Compte.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\services\UtilisateurService.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\services\TitreServiceLocal.java
 C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\entities\Titre.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\CompteFacade.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\controllers\CompteFacadeLocal.java
+C:\Users\KevinDufour\Documents\NetBeansProjects\ApplicationBroker\ApplicationBroker-ejb\src\main\java\core\services\UtilisateurServiceLocal.java

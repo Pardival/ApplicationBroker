@@ -5,8 +5,11 @@
  */
 package core.services;
 
+import com.google.gson.Gson;
+import core.controllers.TitreFacade;
 import core.entities.Titre;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -16,14 +19,20 @@ import javax.ejb.Stateless;
 @Stateless
 public class TitreService implements TitreServiceLocal {
 
+    @EJB
+    private TitreFacade titreFacade;
+    
+    private Gson gson;
+    
     @Override
-    public Titre consulterTitre(String mnemonique) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String consulterTitre() {
+        //TODO convertir en JSON
+        return this.gson.toJson(titreFacade.afficherTitres());
     }
 
     @Override
-    public List<Titre> rechercheMnemonique(String mnemonique) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String rechercheMnemonique(String mnemonique) {
+        return this.gson.toJson(titreFacade.trouverParMnemonique(mnemonique));
     }
 
     @Override

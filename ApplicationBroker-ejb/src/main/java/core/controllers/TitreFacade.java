@@ -8,6 +8,7 @@ package core.controllers;
 import core.entities.Titre;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,6 +18,7 @@ import javax.persistence.PersistenceContext;
  * @author KevinDufour
  */
 @Stateless
+@Singleton
 public class TitreFacade extends AbstractFacade<Titre> implements TitreFacadeLocal {
 
     @PersistenceContext(unitName = "com.mycompany_ApplicationBroker-ejb_ejb_1.0-SNAPSHOTPU")
