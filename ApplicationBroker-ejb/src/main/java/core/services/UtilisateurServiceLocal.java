@@ -16,11 +16,13 @@ import javax.ejb.Local;
  */
 @Local
 public interface UtilisateurServiceLocal {
-    Utilisateur ajouterUtilisateur(Utilisateur aAjouter);
+    String ajouterUtilisateur(Utilisateur aAjouter);
+    
+    String introductionEnBourse(String nomUtilisateur, Titre aIntroduire);
     
     Utilisateur supprimerUtilisateur(Utilisateur aSupprimer);
     
     Titre acheterAction(Titre idTitre, Double prixAchat, Double prixVente, Long idUtilisateur);
     
-    List<Titre> consulterPosition(Long idUtilisateur);
+    String consulterPosition(String nom);
 }

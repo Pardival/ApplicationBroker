@@ -31,13 +31,13 @@ public interface UtilisateurFacadeLocal {
     int count();
     
     /////////////////////////////////////////
-    Utilisateur ajouter(Utilisateur aAjouter);
+    Utilisateur ajouter(Utilisateur aAjouter) throws Exception;
     
-    Utilisateur supprimer(Utilisateur aSupprimer);
+    Utilisateur supprimer(Utilisateur aSupprimer) throws Exception;
     
-    Utilisateur modifier(Utilisateur aModifier);
+    Utilisateur modifier(Utilisateur aModifier)throws Exception ;
     
-    Utilisateur aTrouverParId(String idUtilisateur);
+    Utilisateur aTrouverParId(String nom) throws Exception;
     
     
 }

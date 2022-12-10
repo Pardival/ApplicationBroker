@@ -35,8 +35,14 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     /////////////////////////////////////////
 
     @Override
-    public Utilisateur ajouter(Utilisateur aAjouter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur ajouter(Utilisateur aAjouter) throws Exception {
+        for (int i = 0; i < utilisateurs.size(); i++) {
+            if (utilisateurs.get(i).getNom().equals(aAjouter.getNom())) {
+                throw new Exception();
+            }
+        }
+        utilisateurs.add(aAjouter);
+        return aAjouter;
     }
 
     @Override
@@ -45,12 +51,23 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     }
 
     @Override
-    public Utilisateur modifier(Utilisateur aModifier) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur modifier(Utilisateur aModifier) throws Exception  {        
+        for (int i = 0; i < utilisateurs.size(); i++) {
+            if (utilisateurs.get(i).getNom().equals(aModifier.getNom())) {
+                utilisateurs.set(i, aModifier);
+                return aModifier;
+            }
+        }
+        throw new Exception();
     }
 
     @Override
-    public Utilisateur aTrouverParId(String idUtilisateur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur aTrouverParId(String nom) throws Exception {
+        for (int i = 0; i < utilisateurs.size(); i++) {
+            if (utilisateurs.get(i).getNom().equals(nom)) {
+                return utilisateurs.get(i);
+            }   
+        }
+        throw new Exception();
     }
 }
