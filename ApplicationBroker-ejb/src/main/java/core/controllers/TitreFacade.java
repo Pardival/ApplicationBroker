@@ -6,6 +6,7 @@
 package core.controllers;
 
 import core.entities.Titre;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ public class TitreFacade extends AbstractFacade<Titre> implements TitreFacadeLoc
     @PersistenceContext(unitName = "com.mycompany_ApplicationBroker-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
     
-    private List<Titre> titres;
+    private List<Titre> titres = new ArrayList<Titre>();
 
     @Override
     protected EntityManager getEntityManager() {
@@ -46,26 +47,46 @@ public class TitreFacade extends AbstractFacade<Titre> implements TitreFacadeLoc
     
     @Override
     public List<Titre> ajouter(Titre aAjouter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO TitreExistException
+        titres.add(aAjouter);
+        return titres;
     }
 
     @Override
     public List<Titre> supprimer(Titre aSupprimer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO TitreInconnuxception ?
+        for (int i = 0; i < titres.size(); i++) {
+            if (titres.get(i).getMnemonique().equals(aSupprimer.getMnemonique())) {
+                titres.remove(i);
+            }
+        }
+        return titres;
     }
     
     @Override
     public List<Titre> modifier(Titre aModifier) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // TODO TitreInconnuxception ?
+        for (int i = 0; i < titres.size(); i++) {
+            if (titres.get(i).getMnemonique().equals(aModifier.getMnemonique())) {
+                titres.set(i, aModifier);
+            }
+        }
+        return titres;
     }
 
     @Override
     public Titre trouverParMnemonique(String mnemonique) {
+        // TODO TitreInconnuxception ?
+        for (int i = 0; i < titres.size(); i++) {
+            if (titres.get(i).getMnemonique().equals(mnemonique)) {
+                return titres.get(i);
+            }
+        }
         return null;
     }
 
     @Override
-    public List<Titre> rechercheMnemonique(String mnemonique) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Titre> afficherTitres() {
+        return titres;
     }
 }

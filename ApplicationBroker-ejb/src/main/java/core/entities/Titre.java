@@ -103,7 +103,7 @@ public class Titre implements Serializable {
             return false;
         }
         Titre other = (Titre) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.mnemonique == null && other.mnemonique != null) || (this.mnemonique != null && !this.mnemonique.equals(other.mnemonique))) {
             return false;
         }
         return true;

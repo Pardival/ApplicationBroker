@@ -39,5 +39,5 @@ public interface TitreFacadeLocal {
     
     Titre trouverParMnemonique(String mnemonique);
     
-    List<Titre> rechercheMnemonique(String mnemonique);
+    List<Titre> afficherTitres();
 }
