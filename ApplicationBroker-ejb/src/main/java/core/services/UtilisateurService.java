@@ -6,14 +6,12 @@
 package core.services;
 
 import com.google.gson.Gson;
-import core.controllers.UtilisateurFacade;
 import core.controllers.UtilisateurFacadeLocal;
 import core.entities.Compte;
 import core.entities.Titre;
 import core.entities.Utilisateur;
 import core.mdb.IntegrationEnBourseProducer;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -44,7 +42,7 @@ public class UtilisateurService implements UtilisateurServiceLocal {
             aAjouter.setCompte(compte);
             return utilisateurFacade.ajouter(aAjouter);
         } catch (Exception e) {
-            System.out.println("Erreur durant l'ajout de l'utilisateur");Utilisateur aAjouter = new Utilisateur();
+            System.out.println("Erreur durant l'ajout de l'utilisateur");
             Utilisateur aRetourner = new Utilisateur();
             aRetourner.setError(true);
             return aRetourner;

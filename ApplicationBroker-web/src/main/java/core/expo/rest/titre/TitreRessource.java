@@ -35,14 +35,13 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class TitreRessource {
 
-    TitreServiceLocal titreService = lookupBanqueBeanLocal();
-
     @Context
     private UriInfo context;
 
-
     // Convertisseur JSON
     private Gson gson;
+    
+    private TitreServiceLocal titreService;
 
     /**
      * Creates a new instance of ComptesResource

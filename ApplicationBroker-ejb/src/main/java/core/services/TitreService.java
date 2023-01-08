@@ -6,10 +6,7 @@
 package core.services;
 
 import com.google.gson.Gson;
-import core.controllers.TitreFacade;
 import core.controllers.TitreFacadeLocal;
-import core.entities.Titre;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
