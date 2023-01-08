@@ -29,6 +29,8 @@ public class Utilisateur implements Serializable {
     
     @NotNull
     private Compte compte;
+    
+    private boolean error;
 
     public Long getId() {
         return id;
@@ -53,8 +55,14 @@ public class Utilisateur implements Serializable {
     public void setCompte(Compte compte) {
         this.compte = compte;
     }
-    
-    
+
+    public boolean isError() {
+        return error;
+    }
+
+    public void setError(boolean error) {
+        this.error = error;
+    }
 
     @Override
     public int hashCode() {

@@ -7,7 +7,10 @@
  */
 package core.expo.rest.titre;
 import com.google.gson.Gson;
+import core.dataObject.IntroductionEnBourse;
+import core.dataObject.Utilisateur;
 import core.services.TitreServiceLocal;
+import core.services.UtilisateurServiceLocal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -31,11 +34,11 @@ import javax.ws.rs.core.Response;
  *
  * @author Kevin
  */
-@Path("titre")
+@Path("utilisateur")
 @RequestScoped
-public class TitreRessource {
+public class UtilisateurRessource {
 
-    TitreServiceLocal titreService = lookupBanqueBeanLocal();
+    UtilisateurServiceLocal utilisateurService = lookupBanqueBeanLocal();
 
     @Context
     private UriInfo context;
@@ -47,9 +50,9 @@ public class TitreRessource {
     /**
      * Creates a new instance of ComptesResource
      */
-    public TitreRessource() {
+    public UtilisateurRessource() {
         this.gson = new Gson();
-        this.titreService = this.lookupBanqueBeanLocal();
+        this.utilisateurService = this.lookupBanqueBeanLocal();
     }
 
     /**
@@ -62,10 +65,28 @@ public class TitreRessource {
         return "oinoin";
     }
 
-    private TitreServiceLocal lookupBanqueBeanLocal() {
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public String ajouterUtilisateur(Utilisateur utilisateur) {
+        
+        return this.gson.toJson(this.utilisateurService
+                .ajouterUtilisateur(utilisateur.getNom(), utilisateur.getSolde()));
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/introduction-en-bourse")
+    public String indtroductionEnBourse(IntroductionEnBourse datas) {
+        
+        return this.gson.toJson(this.utilisateurService
+                .introductionEnBourse(datas.getNomEntreprise(),
+                        datas.getMnemonique(), datas.getCours(), datas.getVariation(), datas.getDateCours()));
+    }
+    
+    private UtilisateurServiceLocal lookupBanqueBeanLocal() {
         try {
             javax.naming.Context c = new InitialContext();
-            return (TitreServiceLocal) c.lookup("java:global/ApplicationBroker-web/TitreService");
+            return (UtilisateurServiceLocal) c.lookup("java:global/ApplicationBroker-web/UtilisateurService");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

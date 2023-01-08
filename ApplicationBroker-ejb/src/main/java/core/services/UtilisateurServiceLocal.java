@@ -7,6 +7,7 @@ package core.services;
 
 import core.entities.Titre;
 import core.entities.Utilisateur;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,9 +17,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface UtilisateurServiceLocal {
-    String ajouterUtilisateur(Utilisateur aAjouter);
+    Utilisateur ajouterUtilisateur(String nom, Double solde);
     
-    String introductionEnBourse(String nomUtilisateur, Titre aIntroduire);
+    public Titre introductionEnBourse(String nomEntreprise, 
+            String mnemonique, Double cours, Integer variation, Date dateCours);
     
     Utilisateur supprimerUtilisateur(Utilisateur aSupprimer);
     
