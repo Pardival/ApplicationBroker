@@ -39,6 +39,24 @@ public class Compte implements Serializable {
         this.id = id;
     }
 
+    public Double getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+    public List<Titre> getTitres() {
+        return titres;
+    }
+
+    public void setTitres(List<Titre> titres) {
+        this.titres = titres;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

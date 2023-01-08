@@ -18,7 +18,6 @@ import javax.persistence.PersistenceContext;
  * @author KevinDufour
  */
 @Stateless
-@Singleton
 public class TitreFacade extends AbstractFacade<Titre> implements TitreFacadeLocal {
 
     @PersistenceContext(unitName = "com.mycompany_ApplicationBroker-ejb_ejb_1.0-SNAPSHOTPU")

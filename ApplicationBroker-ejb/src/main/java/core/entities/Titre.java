@@ -40,6 +40,8 @@ public class Titre implements Serializable {
     
     @NotNull
     private Date dateCours;
+    
+    private boolean error;
 
     public Long getId() {
         return id;
@@ -89,6 +91,14 @@ public class Titre implements Serializable {
         this.dateCours = dateCours;
     }
 
+    public boolean isError() {
+        return error;
+    }
+
+    public void setError(boolean error) {
+        this.error = error;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

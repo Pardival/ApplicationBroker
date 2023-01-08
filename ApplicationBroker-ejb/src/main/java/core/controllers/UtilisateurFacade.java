@@ -6,6 +6,7 @@
 package core.controllers;
 
 import core.entities.Utilisateur;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     @PersistenceContext(unitName = "com.mycompany_ApplicationBroker-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
     
-    List<Utilisateur> utilisateurs;
+    List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 
     @Override
     protected EntityManager getEntityManager() {

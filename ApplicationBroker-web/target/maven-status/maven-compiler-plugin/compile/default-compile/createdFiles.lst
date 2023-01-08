@@ -1,0 +1,5 @@
+core\expo\rest\titre\ApplicationConfig.class
+core\dataObject\IntroductionEnBourse.class
+core\expo\rest\titre\TitreRessource.class
+core\dataObject\Utilisateur.class
+core\expo\rest\titre\UtilisateurRessource.class

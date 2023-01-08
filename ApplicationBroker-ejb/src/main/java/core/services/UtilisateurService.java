@@ -7,8 +7,12 @@ package core.services;
 
 import com.google.gson.Gson;
 import core.controllers.UtilisateurFacade;
+import core.controllers.UtilisateurFacadeLocal;
+import core.entities.Compte;
 import core.entities.Titre;
 import core.entities.Utilisateur;
+import core.mdb.IntegrationEnBourseProducer;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,36 +27,56 @@ import javax.ejb.Stateless;
 public class UtilisateurService implements UtilisateurServiceLocal {
 
     @EJB
-    private UtilisateurFacade utilisateurFacade;
+    private UtilisateurFacadeLocal utilisateurFacade;
+    
+    @EJB
+    private IntegrationEnBourseProducer integrationEnBourseProducer;
     
     private Gson gson;
     
     @Override
-    public String ajouterUtilisateur(Utilisateur aAjouter) {
+    public Utilisateur ajouterUtilisateur(String nom, Double solde) {
         try {
-            return this.gson.toJson(utilisateurFacade.ajouter(aAjouter));
+            Utilisateur aAjouter = new Utilisateur();
+            Compte compte = new Compte();
+            compte.setSolde(solde);
+            aAjouter.setNom(nom);
+            aAjouter.setCompte(compte);
+            return utilisateurFacade.ajouter(aAjouter);
         } catch (Exception e) {
-            System.out.println("Erreur durant l'ajout de l'utilisateur");
-            return this.gson.toJson(null);
+            System.out.println("Erreur durant l'ajout de l'utilisateur");Utilisateur aAjouter = new Utilisateur();
+            Utilisateur aRetourner = new Utilisateur();
+            aRetourner.setError(true);
+            return aRetourner;
         }
     }
     
     @Override
-    public String introductionEnBourse(String nomUtilisateur, Titre aIntroduire) {
-        try {
-            // TODO
-            
+    public Titre introductionEnBourse(String nomEntreprise, 
+            String mnemonique, Double cours, Integer variation, Date dateCours) {
+        try {    
             // Utilisateur existe t-il ?
-            utilisateurFacade.aTrouverParId(nomUtilisateur);
+            utilisateurFacade.aTrouverParId(nomEntreprise);
             
-            // Créer le message
+            // Création du titre boursier
+            Titre aIntroduire = new Titre();
+            aIntroduire.setNomEntreprise(nomEntreprise);
+            aIntroduire.setDateCours(dateCours);
+            aIntroduire.setMnemonique(mnemonique);
+            aIntroduire.setPrix(cours);
+            aIntroduire.setQuantiteDisponible(variation);
             
-            // Mettre dans la queue 
+            // Envoyer message au market place
+            integrationEnBourseProducer.sendTitre(aIntroduire);
+            
+            // Retour REST
+            return aIntroduire;
         } catch (Exception ex) {
             Logger.getLogger(UtilisateurService.class.getName()).log(Level.SEVERE, null, ex);
+            Titre aRetourner = new Titre();
+            aRetourner.setError(true);
+            return aRetourner;
         }
-        
-        return "nok";
     }
 
     @Override
