@@ -17,7 +17,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class TitreService implements TitreServiceLocal {
 
-    @EJB
+    @EJB(beanName="BrokertTitreBean")
     private TitreFacadeLocal titreFacade;
     
     private Gson gson;

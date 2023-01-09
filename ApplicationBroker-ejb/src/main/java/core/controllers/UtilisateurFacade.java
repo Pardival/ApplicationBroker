@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author KevinDufour
  */
-@Stateless
+@Stateless(name="brokerUtilisateurBean")
 public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements UtilisateurFacadeLocal {
 
     @PersistenceContext(unitName = "com.mycompany_ApplicationBroker-ejb_ejb_1.0-SNAPSHOTPU")

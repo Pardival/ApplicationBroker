@@ -79,7 +79,7 @@ public class UtilisateurRessource {
     private UtilisateurServiceLocal lookupBanqueBeanLocal() {
         try {
             javax.naming.Context c = new InitialContext();
-            return (UtilisateurServiceLocal) c.lookup("java:global/ApplicationBroker-web/UtilisateurService");
+            return (UtilisateurServiceLocal) c.lookup("java:global/ApplicationBroker-ear/ApplicationBroker-web-1.0-SNAPSHOT/UtilisateurService");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

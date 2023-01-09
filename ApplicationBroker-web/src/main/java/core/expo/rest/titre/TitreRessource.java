@@ -64,7 +64,7 @@ public class TitreRessource {
     private TitreServiceLocal lookupBanqueBeanLocal() {
         try {
             javax.naming.Context c = new InitialContext();
-            return (TitreServiceLocal) c.lookup("java:global/ApplicationBroker-web/TitreService");
+            return (TitreServiceLocal) c.lookup("java:global/ApplicationBroker-ear/ApplicationBroker-web-1.0-SNAPSHOT/TitreService");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

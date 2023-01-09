@@ -10,7 +10,7 @@ import core.controllers.UtilisateurFacadeLocal;
 import core.entities.Compte;
 import core.entities.Titre;
 import core.entities.Utilisateur;
-import core.mdb.IntegrationEnBourseProducer;
+import core.mdb.IntegrationEnBourseProducerLocal;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,11 +24,11 @@ import javax.ejb.Stateless;
 @Stateless
 public class UtilisateurService implements UtilisateurServiceLocal {
 
-    @EJB
+    @EJB(beanName="brokerUtilisateurBean")
     private UtilisateurFacadeLocal utilisateurFacade;
     
-    @EJB
-    private IntegrationEnBourseProducer integrationEnBourseProducer;
+    @EJB(beanName="IntegrationEnBourseProducer")
+    private IntegrationEnBourseProducerLocal integrationEnBourseProducer;
     
     private Gson gson;
     

@@ -23,8 +23,8 @@ import javax.jms.Topic;
 *
 * @author Kev
 */
-@Singleton
-public class IntegrationEnBourseProducer {
+@Singleton(name="IntegrationEnBourseProducer")
+public class IntegrationEnBourseProducer implements IntegrationEnBourseProducerLocal {
 
     public enum JMSTypeMessage {
         EDIT("edit"),
