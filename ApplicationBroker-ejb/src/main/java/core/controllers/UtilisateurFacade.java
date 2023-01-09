@@ -22,7 +22,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
     @PersistenceContext(unitName = "com.mycompany_ApplicationBroker-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
     
-    List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+    List<Utilisateur> utilisateurs = new ArrayList<>();
 
     @Override
     protected EntityManager getEntityManager() {
@@ -42,6 +42,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> implements Ut
                 throw new Exception();
             }
         }
+        
         utilisateurs.add(aAjouter);
         return aAjouter;
     }

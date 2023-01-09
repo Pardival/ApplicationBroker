@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
@@ -23,7 +24,8 @@ import javax.jms.Topic;
 *
 * @author Kev
 */
-@Singleton(name="IntegrationEnBourseProducer")
+@Singleton
+@Stateless(name="IntegrationEnBourseProducer")
 public class IntegrationEnBourseProducer implements IntegrationEnBourseProducerLocal {
 
     public enum JMSTypeMessage {
@@ -54,6 +56,7 @@ public class IntegrationEnBourseProducer implements IntegrationEnBourseProducerL
     @JMSConnectionFactory("ConnectionFactory")
     private JMSContext context;
 
+    @Override
     public void sendTitre(Titre titre) {
         try {
             JMSProducer producer = context.createProducer();

@@ -35,11 +35,13 @@ public class UtilisateurService implements UtilisateurServiceLocal {
     @Override
     public Utilisateur ajouterUtilisateur(String nom, Double solde) {
         try {
-            Utilisateur aAjouter = new Utilisateur();
             Compte compte = new Compte();
             compte.setSolde(solde);
+            
+            Utilisateur aAjouter = new Utilisateur();
             aAjouter.setNom(nom);
             aAjouter.setCompte(compte);
+      
             return utilisateurFacade.ajouter(aAjouter);
         } catch (Exception e) {
             System.out.println("Erreur durant l'ajout de l'utilisateur");

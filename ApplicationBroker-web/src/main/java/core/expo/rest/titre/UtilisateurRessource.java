@@ -68,18 +68,23 @@ public class UtilisateurRessource {
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/introduction-en-bourse")
+        @Path("/introduction-en-bourse")
     public String indtroductionEnBourse(IntroductionEnBourse datas) {
         
-        return this.gson.toJson(this.utilisateurService
+        try {
+            return this.gson.toJson(this.utilisateurService
                 .introductionEnBourse(datas.getNomEntreprise(),
                         datas.getMnemonique(), datas.getCours(), datas.getVariation(), datas.getDateCours()));
+        } catch(Exception e) {
+            return this.gson.toJson("Une erreur s'est produite ! ("+e.getMessage()+")");
+        }
+        
     }
     
     private UtilisateurServiceLocal lookupBanqueBeanLocal() {
         try {
             javax.naming.Context c = new InitialContext();
-            return (UtilisateurServiceLocal) c.lookup("java:global/ApplicationBroker-ear/ApplicationBroker-web-1.0-SNAPSHOT/UtilisateurService");
+            return (UtilisateurServiceLocal) c.lookup("java:global/ApplicationBroker-ear/ApplicationBroker-ejb-1.0-SNAPSHOT/UtilisateurService");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
